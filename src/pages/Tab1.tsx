@@ -1,8 +1,18 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
+import React from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import ExploreContainer from "../components/ExploreContainer";
+import useGeolocation from "../hooks/useGeolocation"; // Importez le hook
+import "./Tab1.css";
 
 const Tab1: React.FC = () => {
+  const { position, error } = useGeolocation();
+
   return (
     <IonPage>
       <IonHeader>
@@ -16,7 +26,16 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <section className="position">
+          {position && (
+            <div>
+              <h2>Position:</h2>
+              <p>Latitude: {position.coords.latitude}</p>
+              <p>Longitude: {position.coords.longitude}</p>
+            </div>
+          )}
+          {error && <div>Erreur: {error.message}</div>}
+        </section>
       </IonContent>
     </IonPage>
   );
