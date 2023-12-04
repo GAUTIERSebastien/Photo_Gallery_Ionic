@@ -1,6 +1,12 @@
 .position {
   justify-content: center;
-}
-.position {
   display: flex;
+  border: solid 1px;
+  padding: 10px 20px;
+}
+.latitude {
+  color: rgb(255, 0, 0);
+}
+.longitude {
+  color: rgb(0, 149, 10);
 }

@@ -7,7 +7,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
-import useGeolocation from "../hooks/useGeolocation"; // Importez le hook
+import useGeolocation from "../hooks/useGeolocation";
 import "./Tab1.css";
 
 const Tab1: React.FC = () => {
@@ -30,8 +30,14 @@ const Tab1: React.FC = () => {
           {position && (
             <div>
               <h2>Position:</h2>
-              <p>Latitude: {position.coords.latitude}</p>
-              <p>Longitude: {position.coords.longitude}</p>
+              <p>
+                Latitude:{" "}
+                <span className="latitude">{position.coords.latitude}</span>
+              </p>
+              <p>
+                Longitude:{" "}
+                <span className="longitude">{position.coords.longitude}</span>
+              </p>
             </div>
           )}
           {error && <div>Erreur: {error.message}</div>}
